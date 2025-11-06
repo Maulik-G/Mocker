@@ -1,0 +1,45 @@
+'use client';
+import React from 'react'
+import Link from 'next/link'
+import { 
+  SignInButton,  
+  SignedIn, 
+  SignedOut, 
+  UserButton 
+} from '@clerk/nextjs';
+import "@/app/globals.css"
+
+function NavBar() {
+  return (
+      <nav> 
+        <div className="nav-container">
+          {/* Use Link for the logo as well */}
+          <Link href="/" className="logo"> 
+            🎯 Mocker
+          </Link>
+          
+          <div className="nav-links">
+            {/* Use the 'href' prop for the destination path */}
+            <Link href="/">Home</Link>
+            <Link href="/mocks">Mocks</Link>
+            <SignedIn>
+            <Link href="/dashboard">Dashboard</Link>
+            {/* The UserButton shows  a profile icon and menu */}
+            <UserButton afterSignOutUrl="/" /> 
+            </SignedIn>
+          
+            <SignedOut>
+            
+              <SignInButton mode="modal">
+                <button className="btn btn-primary">
+                  Login
+                </button>
+              </SignInButton>
+            </SignedOut>
+          </div>
+        </div>
+      </nav>
+  )
+}
+
+export default NavBar;
