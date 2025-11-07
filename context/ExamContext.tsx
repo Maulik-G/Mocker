@@ -2,6 +2,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'react';
+import { saveExamResult } from '@/app/actions/saveResults'; // <-- This import is correct
 
 // --- Define your types ---
 type MockType = any;
@@ -60,12 +61,18 @@ export function ExamProvider({ children }: { children: ReactNode }) {
           if (prev.timeRemaining <= 1) {
             clearInterval(timerIntervalRef.current!);
             // Handle auto-submit
-            // We'll just set the state; a useEffect on the exam page can redirect
+            const autoSubmitResults = calculateResults({ ...prev, timeRemaining: 0 });
+            // Also save on auto-submit
+            if (autoSubmitResults) {
+              saveExamResult(autoSubmitResults).catch(err => {
+                console.error("Failed to auto-save results:", err.message);
+              });
+            }
             return { 
               ...prev, 
               timeRemaining: 0, 
               isSubmitted: true,
-              results: calculateResults({ ...prev, timeRemaining: 0 }) // Calculate results on auto-submit
+              results: autoSubmitResults 
             };
           }
           return { ...prev, timeRemaining: prev.timeRemaining - 1 };
@@ -96,13 +103,12 @@ export function ExamProvider({ children }: { children: ReactNode }) {
                       (!Array.isArray(answer) || answer.length > 0);
     
     const currentState = currentStates[index];
-    // Check if it's marked (don't want to lose this)
     const isMarked = currentState === 'marked' || currentState === 'answered-marked';
 
     if (hasAnswer && isMarked) return 'answered-marked';
     if (hasAnswer) return 'answered';
     if (isMarked) return 'marked';
-    return 'not-answered'; // Visited but no answer
+    return 'not-answered';
   };
 
   // --- Helper function (your calculateResults, adapted for context) ---
@@ -125,7 +131,6 @@ export function ExamProvider({ children }: { children: ReactNode }) {
       
       let isCorrect = false;
       
-      // --- THIS IS YOUR FULL LOGIC ---
       switch(question.type) {
         case 'MCQ_SINGLE':
         case 'TRUE_FALSE':
@@ -152,15 +157,14 @@ export function ExamProvider({ children }: { children: ReactNode }) {
         default:
           isCorrect = false;
       }
-      // --- END OF YOUR LOGIC ---
 
       const marksAwarded = isCorrect ? question.marks : question.negativeMarks;
       totalScore += marksAwarded;
         if (isCorrect) {
-             correctCount++;
+          correctCount++;
         } else {
-            wrongCount++;
-   }      
+          wrongCount++;
+      }       
       return { question, userAnswer, isCorrect, marksAwarded };
     });
     
@@ -206,13 +210,11 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  // Replaces selectOption, toggleMultiOption, updateFillBlank, etc.
   const answerQuestion = (questionId: string, answer: any) => {
     setExamState(prev => {
       const newAnswers = { ...prev.userAnswers, [questionId]: answer };
       const newStates = { ...prev.questionStates };
 
-      // Update the state for the current question
       newStates[prev.currentQuestionIndex] = getUpdatedQuestionState(
         prev.currentQuestionIndex,
         newAnswers,
@@ -228,7 +230,6 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  // Replaces your clearResponse
   const clearResponse = () => {
     setExamState(prev => {
       const currentQuestion = prev.questions[prev.currentQuestionIndex];
@@ -249,7 +250,6 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  // Replaces your toggleMarkForReview
   const toggleMarkForReview = () => {
     setExamState(prev => {
       const newStates = { ...prev.questionStates };
@@ -266,7 +266,6 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  // Replaces your jumpToQuestion
   const jumpToQuestion = (index: number) => {
     if (index < 0 || index >= examState.questions.length || index === examState.currentQuestionIndex) return;
     
@@ -279,29 +278,78 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  // Replaces your navigateQuestion and saveAndNext
   const navigateQuestion = (direction: number) => {
     const newIndex = examState.currentQuestionIndex + direction;
     jumpToQuestion(newIndex); // Use jumpToQuestion logic
   };
   
-  // --- New Submit Function (replaces your submitExam) ---
-  const submitExam = () => {
+  // ---
+  // --- THIS IS THE CORRECT, UPDATED FUNCTION ---
+  // // ---
+  // const submitExam = () => {
+  //   // Stop the timer
+  //   if (timerIntervalRef.current) {
+  //     clearInterval(timerIntervalRef.current);
+  //   }
+    
+  //   // Calculate results and update state
+  //   setExamState(prev => {
+  //     // 1. Calculate results (you already do this)
+  //     const results = calculateResults(prev);
+
+  //     // 2. Call the Server Action (THE NEW STEP)
+  //     //    This saves the results to your database
+  //     if (results) {
+  //       saveExamResult(results).catch(err => {
+  //         console.error("Failed to save results:", err.message);
+  //         // Optionally, you could show an error toast to the user here
+  //       });
+  //     }
+
+  //     // 3. Set the local state (you already do this)
+  //     //    This is what makes your results page work
+  //     return {
+  //       ...prev,
+  //       isSubmitted: true,
+  //       results: results,
+  //     };
+  //   });
+  // };
+  // context/ExamContext.tsx
+
+  // --- THIS IS THE CORRECTED SUBMIT FUNCTION ---
+  const submitExam = async () => {
     // Stop the timer
     if (timerIntervalRef.current) {
       clearInterval(timerIntervalRef.current);
     }
+
+    // 1. Get the current state *before* setting it
+    const currentState = examState;
     
-    // Calculate results and update state
-    setExamState(prev => {
-      const results = calculateResults(prev);
-      return {
-        ...prev,
-        isSubmitted: true,
-        results: results,
-      };
-    });
+    // 2. Calculate the results
+    const results = calculateResults(currentState);
+
+    // 3. Save the results to the server FIRST
+    if (results) {
+      try {
+        // Wait for the server action to complete
+        await saveExamResult(results); 
+      } catch (err: any) {
+        console.error("Failed to save results:", err.message);
+        // Optionally, show an error toast to the user here
+      }
+    }
+
+    // 4. NOW set the local state
+    setExamState(prev => ({
+      ...prev,
+      isSubmitted: true,
+      results: results,
+    }));
   };
+  // --- END OF FIX ---
+  // --- END OF CORRECTED FUNCTION ---
 
   const value = {
     examState,

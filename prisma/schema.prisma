@@ -1,15 +1,37 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// This is your Prisma schema file
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model ExamResult {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // This links the result to a specific Clerk user
+  userId    String   // <-- FIXED: Removed @index from this line
+
+  // Data from your 'results.mock' object
+  mockTitle String
+
+  // Data from your 'results' object
+  totalScore       Float
+  maxScore         Float
+  percentage       Float
+  correctCount     Int
+  wrongCount       Int
+  unattemptedCount Int
+  accuracy         Float
+  timeTaken        Int // Stored in seconds
+
+  // This stores the *entire* question-by-question review
+  questionResults  Json
+
+  // --- THIS IS THE CORRECT WAY TO ADD THE INDEX ---
+  @@index([userId])
 }
