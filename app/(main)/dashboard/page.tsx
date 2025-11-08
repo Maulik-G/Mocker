@@ -125,7 +125,7 @@ export default async function DashboardPage({
         {userResults.map((result) => (
           <div key={result.id} className="result-card" style={{border: '1px solid #ccc', padding: '1rem', margin: '1rem 0', borderRadius: '8px'}}>
             <h2>{result.mockTitle}</h2>
-            <p><strong>Score: {result.score} / {result.maxScore}</strong> ({result.percentage.toFixed(1)}%)</p>
+            <p><strong>Score: {result.totalScore} / {result.maxScore}</strong> ({result.percentage.toFixed(1)}%)</p>
             <p>Correct: {result.correctCount} | Wrong: {result.wrongCount}</p>
             <p>Completed on: {new Date(result.createdAt).toLocaleDateString()}</p>
             
