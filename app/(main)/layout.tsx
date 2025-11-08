@@ -14,13 +14,23 @@ export default function MainLayout({
 }) {
   return (
     <>
+      <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
+    }}>
+
       <NavBar />
       
-      <main>
+      {/* 2. Tell the main content to grow and fill empty space */}
+      <main style={{ flexGrow: 1 }}>
         {children}
       </main>
-
+      
+      {/* 3. The footer will now be pushed to the bottom */}
       <Footer />
+      
+    </div>
     </>
   );
 }

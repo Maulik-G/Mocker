@@ -4,6 +4,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 // import { Space } from "lucide-react";
 import Link from "next/link";
 // import NavBar from "../(routes)/_components/NavBar"
+// import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 const words = `Practice. Analyze. Improve. Succeed.`;
 export default function Home() {

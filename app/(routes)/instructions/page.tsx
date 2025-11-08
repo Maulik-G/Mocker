@@ -133,15 +133,7 @@ const DEMO_DATA = {
         
         
         
-        // Custom Physics Mock Questions (21-30)
-        {
-          id: 21, mockId: 3, qOrder: 1, section: "Physics",
-          text: "What is the SI unit of force?",
-          type: "MCQ_SINGLE",
-          options: ["Joule", "Newton", "Watt", "Pascal"],
-          correctAnswer: "B", marks: 3, negativeMarks: -1,
-          explanation: "Newton (N) is the SI unit of force. 1 Newton = 1 kg⋅m/s²"
-        },
+        
   ]
 };
 // -----------------------------------------------------------------

@@ -4,21 +4,21 @@ import Link from 'next/link'
 function Footer() {
     
 const links = [
+    // {
+    //     title: 'Features',
+    //     href: '#features',
+    // },
+    // {
+    //     title: 'Pricing',
+    //     href: '/upgrade',
+    // },
+    // {
+    //     title: 'Help',
+    //     href: '/contact-support',
+    // },
     {
-        title: 'Features',
-        href: '#features',
-    },
-    {
-        title: 'Pricing',
-        href: '/upgrade',
-    },
-    {
-        title: 'Help',
-        href: '/contact-support',
-    },
-    {
-        title: 'About',
-        href: '/how-it-works',
+        title: 'Contact Developer',
+        href: 'https://www.linkedin.com/in/maulikgaur',
     },
 ]
   return (
