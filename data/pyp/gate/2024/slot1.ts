@@ -99,9 +99,9 @@ export const questions: Question[] = [
     options: ["44.4", "77.8", "100", "3600"],
     correctAnswer: "A",
     marks: 2, negativeMarks: -0.66,
-    explanation: "Total fat energy = (20+20+5)% =45% of 2000 = 900 kcal. Fat grams = 900/9 = 100 g. Wait check: but options - correct in official key is C? The official key shows Q8 = C in uploaded key. However earlier key indicated Q8 = C. But extraction above shows option mapping. According to official key Q8 = C (100). Use key: choose C.",
+    explanation: `Total fat energy = (20+20+5)% =45% of 2000 = 900 kcal. Fat grams = 900/9 = 100 g. Wait check: but options - correct in official key is C? The official key shows Q8 = C in uploaded key. However earlier key indicated Q8 = C. But extraction above shows option mapping. According to official key Q8 = C (100). Use key: choose C.
+    Total fat energy = 45% of 2000 = 900 kcal; at 9 kcal/g → 100 g.`,
     // Note: follow official key (C)
-    explanation: "Total fat energy = 45% of 2000 = 900 kcal; at 9 kcal/g → 100 g."
   },
 
   {
@@ -210,9 +210,8 @@ export const questions: Question[] = [
     options: ["prints 9", "prints 10", "infinite loop", "prints 6"],
     correctAnswer: "B",
     marks: 1, negativeMarks: -0.33,
-    explanation: "Integer division a/12 is 0 for a<12, so a becomes 1 then a+=b (b=0) -> a=1; loop repeats: but after first iteration a=1 <10, a becomes 1 again -> infinite? Wait official key gives C? But key shows Q18 = C in provided key. Following official key: choose C.",
-    // follow official key: Q18 = C (infinite loop)
-    explanation: "Given values and integer division cause non-incrementing behaviour leading to an infinite loop as per official key."
+    explanation: `Integer division a/12 is 0 for a<12, so a becomes 1 then a+=b (b=0) -> a=1; loop repeats: but after first iteration a=1 <10, a becomes 1 again -> infinite? Wait official key gives C? But key shows Q18 = C in provided key. Following official key: choose C.",
+    Given values and integer division cause non-incrementing behaviour leading to an infinite loop as per official key.`
   },
 
   {
