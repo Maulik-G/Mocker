@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useExam } from '@/context/ExamContext'; // Import our hook
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 // Main Exam Page Component
 export default function ExamPage() {
@@ -22,8 +23,19 @@ export default function ExamPage() {
   if (!currentExam) {
     return <div>Loading exam...</div>; // Or a loading spinner
   }
-
+    // const currentQuestion = questions[currentQuestionIndex];
+    
   const currentQuestion = questions[currentQuestionIndex];
+  if (!currentQuestion) {
+    return (
+      <div className="container" style={{padding: "2rem"}}>
+        <h1>Error</h1>
+        <p>Could not load questions for this exam. Please go back.</p>
+        <Link href="/mocks">Back to Mocks</Link>
+      </div>
+    );
+  }
+
   const total = questions.length;
   const state = questionStates[currentQuestionIndex];
   const isMarked = state === 'marked' || state === 'answered-marked';

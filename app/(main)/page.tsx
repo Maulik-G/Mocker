@@ -3,6 +3,8 @@ import "@/app/globals.css"
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 // import { Space } from "lucide-react";
 import Link from "next/link";
+import FAQ from "../(routes)/_components/FAQ";
+// import FAQ from "../(routes)/_components/FAQ";
 // import NavBar from "../(routes)/_components/NavBar"
 // import { CardSpotlight } from "@/components/ui/card-spotlight";
 
@@ -46,7 +48,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        <FAQ />
         </div>
+
     </main>
   );
 }

@@ -5,15 +5,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+import { DEMO_DATA } from '@/data/index';
 // 3. Define your data (same as your DEMO_DATA)
-const DEMO_DATA = {
-  mocks: [
-    { id: 1, title: "CAT Mock 1", category: "CAT", description: "Full-length CAT mock", durationMin: 60, questionCount: 66, totalMarks: 198 },
-    { id: 2, title: "GATE CS Mock 1", category: "GATE", description: "Computer Science mock", durationMin: 180, questionCount: 65, totalMarks: 100 },
-    // { id: 3, title: "Custom JS Quiz", category: "CUSTOM", description: "Quick JavaScript quiz", durationMin: 30, questionCount: 20, totalMarks: 20 },
-    // { id: 4, title: "CAT Mock 2", category: "CAT", description: "Second full-length CAT mock", durationMin: 120, questionCount: 66, totalMarks: 198 },
-  ]
-};
+// const DEMO_DATA = {
+//   mocks: [
+//     { id: 1, title: "CAT Mock 1", category: "CAT", description: "Full-length CAT mock", durationMin: 60, questionCount: 66, totalMarks: 198 },
+//     { id: 202501, title: "GATE CS 2025 ", category: "GATE", description: "Computer Science mock", durationMin: 180, questionCount: 65, totalMarks: 100 },
+//     // { id: 3, title: "Custom JS Quiz", category: "CUSTOM", description: "Quick JavaScript quiz", durationMin: 30, questionCount: 20, totalMarks: 20 },
+//     // { id: 4, title: "CAT Mock 2", category: "CAT", description: "Second full-length CAT mock", durationMin: 120, questionCount: 66, totalMarks: 198 },
+//   ]
+// };
 
 // 4. Create your component (this replaces your 'renderMockListing' function)
 export default function MockListingPage() {

@@ -26,6 +26,8 @@ export default function MainLayout({
       <main style={{ flexGrow: 1 }}>
         {children}
       </main>
+
+      
       
       {/* 3. The footer will now be pushed to the bottom */}
       <Footer />

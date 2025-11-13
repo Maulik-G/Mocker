@@ -1,6 +1,7 @@
 'use client';
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image';
 import { 
   SignInButton,  
   SignedIn, 
@@ -15,7 +16,13 @@ function NavBar() {
         <div className="nav-container">
           {/* Use Link for the logo as well */}
           <Link href="/" className="logo"> 
-            🎯 Mocker
+            <Image
+              src="/data/images/logo.png" alt = "Mocker Logo"
+              width={30}
+              height={30}
+              className="logo-image"
+            />
+            🎯 Mocker 
           </Link>
           
           <div className="nav-links">
