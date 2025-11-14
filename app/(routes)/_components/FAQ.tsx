@@ -62,7 +62,7 @@ export default function FAQ() {
       <h2 className="mt-2 text-3xl font-bold">Frequently Asked Questions</h2>
       <p className="text-muted-foreground mt-4">
         Can&apos;t find what you&apos;re looking for? Contact our{" "}
-        <Link href="/contact-support" className="text-primary font-medium hover:underline">
+        <Link href="/team" className="text-primary font-medium hover:underline">
           customer support team
         </Link>
       </p>

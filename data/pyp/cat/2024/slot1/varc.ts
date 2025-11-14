@@ -3,15 +3,33 @@ import { Mock, Question } from '@/data/type';
 
 export const mock: Mock = {
   id: 1,
-  title: "CAT 2024",
+  title: "CAT 2024 Slot 1 VARC",
   category: "CAT",
-  durationMin: 40, // VARC section duration (adjust if you want)
-  totalMarks: 72,
-  questionCount: 24,
-  description: "CAT 2024",
-  instructions: "Answer each question by choosing the best option. Negative marking applies to MCQs.",
+  durationMin: 30, // VARC section duration (adjust if you want)
+  totalMarks: 51,
+  questionCount: 17,
+  description: "Verbal Ability and Reading Comprehension Section of CAT 2024 Slot 1",
+  instructions: `
+Verbal Ability & Reading Comprehension (VARC) Section Instructions:
+
+1.  **Section Duration:** You will have 40 minutes to complete this section.
+2.  **Total Questions:** This section contains 24 questions.
+3.  **Question Types:** The section is divided into two parts:
+    * **Reading Comprehension (RC):** Passages followed by Multiple Choice Questions (MCQs).
+    * **Verbal Ability (VA):** Non-MCQ (TITA - Type In The Answer) questions, including Para Jumbles, Para Summary, and Odd One Out.
+4.  **Marking Scheme:**
+    * **MCQs:** +3 marks for a correct answer, -1 mark for an incorrect answer.
+    * **Non-MCQs (TITA):** +3 marks for a correct answer, 0 marks for an incorrect answer.
+    * No marks are deducted for unattempted questions.
+5.  **Navigation:**
+    * You can navigate between any question within this section during the 40-minute time limit.
+    * An on-screen calculator is **not** available for this section.
+6.  **Answering:**
+    * For MCQs, select one option.
+    * For TITA questions, type your answer (e.g., the correct sequence for Para Jumbles) into the provided text box.
+`,
   sections: [
-    { name: "VARC", questionCount: 24, marks: 72 }
+    { name: "VARC", questionCount: 17, marks: 51 }
   ]
 };
 

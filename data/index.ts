@@ -2,12 +2,14 @@
 import { Mock, Question } from './type';
 
 // 1. Import all your mock data files
-import * as cat2024slot1 from './pyp/cat/2024/slot1';
+import * as cat2024slot1 from './pyp/cat/2024/slot1/varc';
+import * as cat2024slot1_quant from './pyp/cat/2024/slot1/qa';
 import * as gate2025slot1 from './pyp/gate/2025/slot1';
 import * as gate2024slot1 from './pyp/gate/2024/slot1';
 // 2. Combine them into the two arrays your app expects
 const allMocks: Mock[] = [
   cat2024slot1.mock,
+  cat2024slot1_quant.mock,
   gate2025slot1.mock,
   gate2024slot1.mock,
   // ... add other mocks here
@@ -15,6 +17,7 @@ const allMocks: Mock[] = [
 
 const allQuestions: Question[] = [
   ...cat2024slot1.questions,
+  ...cat2024slot1_quant.questions,
   ...gate2025slot1.questions,   
   ...gate2024slot1.questions,
   // ... add other questions here

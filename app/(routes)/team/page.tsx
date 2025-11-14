@@ -39,7 +39,7 @@ const GridItem = ({ area, title, description, image, socials }: GridItemProps) =
           proximity={64}
           inactiveZone={0.01}
         />
-        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl mt-20 p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+        <div className="border-0.75 bg-black  relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl mt-20 p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
           <div className="relative flex flex-1 flex-col justify-between gap-3">
         
             <div className="space-y-3">
@@ -115,11 +115,13 @@ export default function Team() {
           FIX #4: Removed 'mt-5' to rely on heading's margin
           ---
         */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full  max-w-5xl" id="features">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full   max-w-5xl" id="features">
           
           <GridItem
             title="Maulik Gaur"
-            description="I was very keen on building this project to help students prepare for their exams effectively. "
+            description="I have leaded product development and work on delivering a smooth, fast user experience.
+                I build and maintain the core backend, frontend, and test engine systems.
+                I combine product insight with technical expertise to ensure strong performance and stability."
             image="/maulik.jpg"
             socials={[
               { name: "LinkedIn", href: "https://linkedin.com/in/maulikgaur", icon: <Linkedin className="h-5 w-5" /> },
@@ -130,7 +132,9 @@ export default function Team() {
           
           <GridItem
             title="Aaradhya Maharishi"
-            description="Practice with confidence. Make mistakes, stumble over words, and learn without the stress of a human interviewer."
+            description="I have worked with the product experience and focus on making the platform simple and effective.
+                I manage the database, question structure, and ensure all content stays accurate.
+                I blend product thinking with technical skills to keep everything organized and reliable."
             image="/aaradhya.png"
             socials={[
               { name: "LinkedIn", href: "https://www.linkedin.com/in/aaradhyamaharishi/", icon: <Linkedin className="h-5 w-5" /> },
