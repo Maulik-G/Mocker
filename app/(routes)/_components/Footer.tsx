@@ -9,7 +9,13 @@ function Footer() {
   return (
     <footer className="bg-white lg:grid lg:grid-cols-5 dark:bg-gray-900">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
-    <Image src="/logo.png" alt="Mocker" width={30} height={30} className="absolute inset-0 h-full w-full object-cover" />
+    <Image 
+      src="/maulik.jpg" // 1. Removed '/public' from the path
+      alt="Mocker"
+      fill={true} // 2. Added fill={true}
+      // 3. Removed width and height props
+      className="absolute inset-0 h-full w-full object-cover" 
+    />
   </div>
 
   <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
@@ -17,20 +23,19 @@ function Footer() {
       <div>
         <p>
           <span className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-            Call us
+            CALL ME BABYGIRL
           </span>
 
           <a href="#" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl dark:text-white">
-            9784365061
+            Mocker
           </a>
         </p>
 
         <ul className   ="mt-8 space-y-1 text-sm text-gray-700 dark:text-gray-200">
-          <li>Monday to Friday: 10am - 5pm</li>
-          <li>Weekend: 10am - 3pm</li>
+          <li>Master Your Exams.</li>
         </ul>
 
-        <ul className="mt-8 flex gap-6">
+        {/* <ul className="mt-8 flex gap-6">
           <li>
             <a href="#" rel="noreferrer" target="_blank" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
               <span className="sr-only">Facebook</span>
@@ -80,7 +85,7 @@ function Footer() {
               </svg>
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -136,11 +141,7 @@ function Footer() {
               </a>
             </li>
 
-            <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Accounts Review
-              </a>
-            </li>
+            
           </ul>
         </div>
       </div>
@@ -150,22 +151,20 @@ function Footer() {
       <div className="sm:flex sm:items-center sm:justify-between">
         <ul className="flex flex-wrap gap-4 text-xs">
           <li>
-            <a href="#" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
-              Terms &amp; Conditions
-            </a>
+            <a
+                href="/terms"
+                className="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
+              >
+                Terms & Conditions
+              </a>
           </li>
 
           <li>
-            <a href="#" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
+            <a href="/privacy-policy" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
               Privacy Policy
             </a>
           </li>
 
-          <li>
-            <a href="#" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
-              Cookies
-            </a>
-          </li>
         </ul>
 
         <p className="mt-8 text-xs text-gray-500 sm:mt-0 dark:text-gray-400">

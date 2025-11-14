@@ -17,7 +17,7 @@ function NavBar() {
           {/* Use Link for the logo as well */}
           <Link href="/" className="logo"> 
             <Image
-              src="/logo.jpg" alt = "Mocker"
+              src="/maulik.jpg" alt = "Mocker"
               width={50}
               height={50}
               // className="logo-image"
