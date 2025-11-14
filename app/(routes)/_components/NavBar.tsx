@@ -17,12 +17,11 @@ function NavBar() {
           {/* Use Link for the logo as well */}
           <Link href="/" className="logo"> 
             <Image
-              src="/data/images/logo.png" alt = "Mocker Logo"
-              width={30}
-              height={30}
-              className="logo-image"
+              src="/logo.jpg" alt = "Mocker"
+              width={50}
+              height={50}
+              // className="logo-image"
             />
-            🎯 Mocker 
           </Link>
           
           <div className="nav-links">

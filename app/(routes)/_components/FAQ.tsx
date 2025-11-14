@@ -56,51 +56,51 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="bg-muted dark:bg-background py-20">
-      <div className="mx-auto max-w-5xl px-4 md:px-6">
-        <div className="flex flex-col md:flex-row md:gap-16 gap-10 w-full ">
-          {/* Left column: sticky on md+ */}
-          <div className="md:w-1/3">
-            <div className="md:sticky md:top-20">
-              <h2 className="mt-4 text-3xl font-bold">Frequently Asked Questions</h2>
-              <p className="text-muted-foreground mt-4">
-                Can&apos;t find what you&apos;re looking for? Contact our{" "}
-                <Link href="/contact-support" className="text-primary font-medium hover:underline">
-                  customer support team
-                </Link>
-              </p>
-            </div>
-          </div>
+    <section className="bg-muted dark:bg-background py-12">
+      {/* 1. Use a narrower max-width for a single column */}
+      <div className="mx-auto max-w-3xl px-4 md:px-6">
 
-          {/* Right column */}
-          <div className="md:w-2/3">
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {faqItems.map((item) => {
-                const Icon = iconMap[item.icon];
-                return (
-                  <AccordionItem key={item.id} value={item.id} className="bg-background shadow-xs rounded-lg border">
-                    {/* Accordion trigger: full-width, flex row */}
-                    <AccordionTrigger className="w-full flex items-center gap-4 py-4 px-5 text-left hover:no-underline focus:outline-none">
-                      {/* Icon container with explicit sizing */}
-                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-richblack-900/30">
+        {/* --- (I removed the two-column flex wrapper) --- */}
+
+        {/* 2. Left column (Title) is now a centered text block */}
+        <div className="w-full px-2 text-center">
+          <h2 className="mt-2 text-3xl font-bold">Frequently Asked Questions</h2>
+          <p className="text-muted-foreground mt-4">
+            Can&apos;t find what you&apos;re looking for? Contact our{" "}
+            <Link href="/contact-support" className="text-primary font-medium hover:underline">
+              customer support team
+            </Link>
+          </p>
+        </div>
+
+        {/* 3. Right column (Accordion) is now below the title */}
+        <div className="w-full px-2 mt-12">
+          <Accordion type="single" collapsible className="w-full space-y-3">
+            {faqItems.map((item) => {
+              const Icon = iconMap[item.icon];
+              return (
+                <AccordionItem key={item.id} value={item.id} className="w-full bg-background shadow-xs rounded-lg border">
+                  <AccordionTrigger className="w-full flex items-center justify-between gap-4 py-4 px-5 hover:no-underline focus:outline-none">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-7 h-7 rounded-full bg-richblack-900/30 shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
-
-                      {/* Question text - allow wrapping and truncate only if needed */}
-                      <span className="text-base font-medium text-richblack-5">{item.question}</span>
-                    </AccordionTrigger>
-
-                    <AccordionContent className="px-5 pb-5 pt-0">
-                      <div className="text-base text-richblack-300">
-                        <p>{item.answer}</p>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
-          </div>
+                      <span className="text-base font-medium text-richblack-5 leading-tight pr-4">
+                        {item.question}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 pb-5 pt-0">
+                    <div className="text-base text-richblack-300">
+                      <p>{item.answer}</p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         </div>
+
       </div>
     </section>
   );
