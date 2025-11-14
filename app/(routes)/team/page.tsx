@@ -2,7 +2,7 @@
 
 import React from "react";
 // 1. Import social icons
-import { BriefcaseBusiness, Github, Linkedin, Twitter, Lock } from "lucide-react";
+import { BriefcaseBusiness, Github, Linkedin } from "lucide-react";
 // 2. FIX: Use correct relative paths for all imports
 import { GlowingEffect } from "../../../components/ui/glowing-effect";
 import Image from "next/image";
@@ -107,7 +107,7 @@ export default function Team() {
           FIX #3: Increased margin-bottom to mb-20 for more space
           ---
         */}
-        <h2 className="text-4xl font-bold text-center mb-20 text-black dark:text-white">
+        <h2 className="text-4xl pt-20 font-bold text-center mb-20 text-black dark:text-white">
           Meet the Team
         </h2>
 
@@ -135,6 +135,8 @@ export default function Team() {
             socials={[
               { name: "LinkedIn", href: "https://www.linkedin.com/in/aaradhyamaharishi/", icon: <Linkedin className="h-5 w-5" /> },
               // { name: "GitHub", href: "#", icon: <Github className="h-5 w-5" /> },
+              { name: "GitHub", href: "https://github.com/Aaradhya1807", icon: <Github className="h-5 w-5" /> },
+
             ]}
           />
           

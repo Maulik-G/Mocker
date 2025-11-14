@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main>
     
-      <div className="container">
+      <div className="container mx-auto px-4 items-center justify-center text-center py-20">
           <div className="hero">
             <h1>Mocker - Master Your Exams</h1>
             <TextGenerateEffect words={words} />
@@ -48,9 +48,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
+          <FAQ />
         </div>
               
-
     </main>
   );
 }

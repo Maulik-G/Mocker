@@ -3,8 +3,9 @@ import React from 'react'
 import Image from 'next/image'
 
 function Footer() {
-    
 
+
+    
   return (
     <footer className="bg-white lg:grid lg:grid-cols-5 dark:bg-gray-900">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
@@ -178,3 +179,4 @@ function Footer() {
 }
 
 export default Footer
+// app/(main)/mocks/page.tsx

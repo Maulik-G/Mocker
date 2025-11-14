@@ -15,12 +15,12 @@ export const mock: Mock = {
     { name: "CS-1", questionCount: 33, marks: 48 }
   ]
 };
-
 export const questions: Question[] = [
 
   // =========================================================
   // GA QUESTIONS (1–10)
   // =========================================================
+
 
   {
     id: 1, qOrder: 1, mockId: 202501, section: "GA",
