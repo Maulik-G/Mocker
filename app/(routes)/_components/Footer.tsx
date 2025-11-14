@@ -7,7 +7,7 @@ function Footer() {
 
     
   return (
-    <footer className="bg-white lg:grid lg:grid-cols-5 dark:bg-gray-900">
+    <footer className="bg-[#E1DFE8] lg:grid lg:grid-cols-5 dark:bg-gray-900">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
     <Image 
       src="/maulik.jpg" // 1. Removed '/public' from the path
