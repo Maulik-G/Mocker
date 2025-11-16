@@ -43,33 +43,33 @@ function Footer() {
           <ul className="mt-6 space-y-4 text-sm">
             <li>
               <a href="#" className ="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                1on1 Coaching
+                Reviews
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                 Company Review
               </a>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                 Accounts Review
               </a>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                 HR Consulting
               </a>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                 SEO Optimisation
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -78,7 +78,7 @@ function Footer() {
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+              <a href="" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                 About
               </a>
             </li>
