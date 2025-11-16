@@ -23,7 +23,7 @@
  --not-visited: #f0f0f0;         /* Light Grey */
  --not-answered: #dc3545;        /* Red */
  --answered: #28a745;          /* Green */
- --marked: #6f42c1;              /* Purple */
+--marked: #f59e0b;              /* Orange (Your original color) */
  --answered-marked: #6f42c1;     /* Purple (for the box) */
   --answered-marked-dot: #28a745; /* Green (for the dot) */
  --active-question: #ffffff;     /* White */
