@@ -68,9 +68,9 @@ export default function Home() {
             </div>
           </div>
           <FAQ />
-
         </div>
-        <ScrollingReviews lanes = {[REVIEWS_A, REVIEWS_B]} speed = {0.7} />
+        
+        <ScrollingReviews lanes = {[REVIEWS_A, REVIEWS_B]} speed = {0.5} />
 
 
     </main>

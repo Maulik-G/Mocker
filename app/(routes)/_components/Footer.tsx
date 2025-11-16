@@ -42,8 +42,14 @@ function Footer() {
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className ="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Reviews
+              <a href="/terms" className ="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                Terms & Conditions
+              </a>
+            </li>
+
+            <li>
+              <a href="/privacy-policy" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                Privacy Policy
               </a>
             </li>
 
@@ -109,7 +115,7 @@ function Footer() {
     <div className="mt-12 border-t border-gray-100 pt-12 dark:border-gray-800">
       <div className="sm:flex sm:items-center sm:justify-between">
         <ul className="flex flex-wrap gap-4 text-xs">
-          <li>
+          {/* <li>
             <a
                 href="/terms"
                 className="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
@@ -122,8 +128,7 @@ function Footer() {
             <a href="/privacy-policy" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
               Privacy Policy
             </a>
-          </li>
-
+          </li> */}
         </ul>
 
         <p className="mt-8 text-xs text-gray-500 sm:mt-0 dark:text-gray-400">

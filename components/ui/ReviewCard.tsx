@@ -35,7 +35,7 @@ export default function EnhancedReviewCard({ review }: { review: Review }) {
       whileHover={{ scale: 1.03, rotateX: 2, rotateY: -2 }}
       transition={{ type: "spring", stiffness: 110, damping: 14 }}
       className="w-72 min-w-[18rem] bg-gradient-to-br from-white/70 to-white/50 dark:from-gray-800/70 dark:to-gray-800/60
-                 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-white/30 dark:border-black/20 transform-gpu"
+                 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-blue-400/50 dark:border-blue-600/50 transform-gpu"
       style={{
         // subtle layered shadow
         boxShadow:
@@ -49,7 +49,8 @@ export default function EnhancedReviewCard({ review }: { review: Review }) {
           className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-semibold text-gray-800 dark:text-gray-100"
           style={{
             background:
-              review.avatarUrl ? "transparent" : "linear-gradient(135deg,#f3f4f6,#e2e8f0)",
+            
+            review.avatarUrl ? "transparent" : "linear-gradient(135deg,#f3f4f6,#e2e8f0)",
             border: "1px solid rgba(255,255,255,0.5)",
             overflow: "hidden",
           }}

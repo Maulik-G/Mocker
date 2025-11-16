@@ -63,7 +63,7 @@ export default function FAQ() {
       <p className="text-muted-foreground mt-4">
         Can&apos;t find what you&apos;re looking for? Contact our{" "}
         <Link href="/team" className="text-primary font-medium hover:underline">
-          customer support team
+          support team
         </Link>
       </p>
     </div>
