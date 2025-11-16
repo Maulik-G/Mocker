@@ -57,7 +57,7 @@ export default function MockListingPage() {
           className={`filter-btn ${filterCategory === 'TECH' ? 'active' : ''}`}
           onClick={() => setFilterCategory('TECH')}
         >
-          Tech
+          TECH
         </button>
       </div>
 

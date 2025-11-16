@@ -1,4 +1,5 @@
 // context/ExamContext.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'react';
@@ -24,12 +25,12 @@ interface ExamState {
 interface ExamContextType {
   examState: ExamState;
   startExam: (mock: MockType, questions: QuestionType[]) => void;
-  answerQuestion: (questionId: string, answer: any) => void;
+  answerQuestion: (questionId: string, answer: string | string[] ) => void;
   jumpToQuestion: (index: number) => void;
   navigateQuestion: (direction: number) => void;
   toggleMarkForReview: () => void;
   clearResponse: () => void;
-  submitExam: () => void;
+  submitExam: () => Promise<void>;
 }
 
 const ExamContext = createContext<ExamContextType | undefined>(undefined);
@@ -283,42 +284,10 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     jumpToQuestion(newIndex); // Use jumpToQuestion logic
   };
   
-  // ---
-  // --- THIS IS THE CORRECT, UPDATED FUNCTION ---
-  // // ---
-  // const submitExam = () => {
-  //   // Stop the timer
-  //   if (timerIntervalRef.current) {
-  //     clearInterval(timerIntervalRef.current);
-  //   }
-    
-  //   // Calculate results and update state
-  //   setExamState(prev => {
-  //     // 1. Calculate results (you already do this)
-  //     const results = calculateResults(prev);
 
-  //     // 2. Call the Server Action (THE NEW STEP)
-  //     //    This saves the results to your database
-  //     if (results) {
-  //       saveExamResult(results).catch(err => {
-  //         console.error("Failed to save results:", err.message);
-  //         // Optionally, you could show an error toast to the user here
-  //       });
-  //     }
-
-  //     // 3. Set the local state (you already do this)
-  //     //    This is what makes your results page work
-  //     return {
-  //       ...prev,
-  //       isSubmitted: true,
-  //       results: results,
-  //     };
-  //   });
-  // };
-  // context/ExamContext.tsx
 
   // --- THIS IS THE CORRECTED SUBMIT FUNCTION ---
-  const submitExam = async () => {
+  const submitExam = async () : Promise<void> => {
     // Stop the timer
     if (timerIntervalRef.current) {
       clearInterval(timerIntervalRef.current);

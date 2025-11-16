@@ -32,10 +32,14 @@ function InstructionsPage() {
   const [isAgreed, setIsAgreed] = useState(false);
 
   // This replaces your 'startExam' function
-  const handleStartExam = () => {
+  const handleStartExam = async () => {
       if (!mock) return; // Safety check
 
     // 1. Find the questions for this mock
+    const el = document.documentElement;
+    if( el.requestFullscreen) {
+      await el.requestFullscreen();
+    }
     const questions = DEMO_DATA.questions.filter(q => q.mockId === mock.id);
 
     startExam(mock, questions);

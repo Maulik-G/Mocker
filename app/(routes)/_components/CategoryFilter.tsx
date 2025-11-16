@@ -8,7 +8,7 @@ export function CategoryFilter() {
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get('category');
 
-  const categories = ['All', 'CAT', 'GATE']; // Add more as needed
+  const categories = ['All', 'CAT', 'GATE', 'TECH']; // Add more as needed
 
   return (
     <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem' }}>

@@ -1,14 +1,24 @@
-// app/exam/page.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useExam } from '@/context/ExamContext'; // Import our hook
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import ExamProctor from '@/components/exam/ExamProctor';
 
 // Main Exam Page Component
 export default function ExamPage() {
-  const { examState, jumpToQuestion, navigateQuestion, clearResponse, toggleMarkForReview, answerQuestion } = useExam();
+  const {
+    examState,
+    jumpToQuestion,
+    navigateQuestion,
+    clearResponse,
+    toggleMarkForReview,
+    answerQuestion,
+    submitExam, // merged into single useExam call
+  } = useExam();
+
   const router = useRouter();
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false); // <-- Add this
   const { currentExam, questions, currentQuestionIndex, userAnswers, questionStates } = examState;
@@ -23,12 +33,11 @@ export default function ExamPage() {
   if (!currentExam) {
     return <div>Loading exam...</div>; // Or a loading spinner
   }
-    // const currentQuestion = questions[currentQuestionIndex];
-    
+
   const currentQuestion = questions[currentQuestionIndex];
   if (!currentQuestion) {
     return (
-      <div className="container" style={{padding: "2rem"}}>
+      <div className="container" style={{ padding: '2rem' }}>
         <h1>Error</h1>
         <p>Could not load questions for this exam. Please go back.</p>
         <Link href="/mocks">Back to Mocks</Link>
@@ -41,100 +50,102 @@ export default function ExamPage() {
   const isMarked = state === 'marked' || state === 'answered-marked';
 
   return (
-    <div className="exam-container">
-      {/* 1. The Sidebar (Palette) */}
-      <div className="exam-sidebar">
-        <h3 style={{ marginBottom: '1rem' }}>Question Palette</h3>
-        <PaletteLegend />
-        <div className="question-palette">
-          {questions.map((q, index) => (
-            <button
-              key={index}
-              className={`palette-btn ${questionStates[index]} ${index === currentQuestionIndex ? 'active' : ''}`}
-              onClick={() => jumpToQuestion(index)}
-            >
-              {index + 1}
-            </button>
-          ))}
+    <ExamProctor
+      maxViolations={3}
+      suspend={isSubmitModalOpen}
+      onAutoSubmit={async () => {
+        if (document.fullscreenElement) {
+          try {
+            await document.exitFullscreen();
+          } catch {
+            /* ignore */
+          }
+        }
+        await submitExam();
+        router.push('/results?autoSubmitted=true');
+      }}
+    >
+      <div className="exam-container">
+        {/* 1. The Sidebar (Palette) */}
+        <div className="exam-sidebar">
+          <h3 style={{ marginBottom: '1rem' }}>Question Palette</h3>
+          <PaletteLegend />
+          <div className="question-palette">
+            {questions.map((q: any, index: number) => (
+              <button
+                key={index}
+                className={`palette-btn ${questionStates[index]} ${index === currentQuestionIndex ? 'active' : ''}`}
+                onClick={() => jumpToQuestion(index)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* 2. The Main Content */}
+        <div className="exam-main">
+          <div className="exam-header">
+            <div>
+              <h2 style={{ margin: 0 }}>{currentExam.title}</h2>
+              <p style={{ margin: 0, opacity: 0.9, fontSize: '14px' }}>Section: {currentQuestion.section}</p>
+            </div>
+
+            {/* Timer Component */}
+            <ExamTimer />
+
+            <button className="btn btn-danger" onClick={() => setIsSubmitModalOpen(true)}>
+              Submit Test
+            </button>
+          </div>
+
+          <div className="exam-content">
+            <div style={{ marginBottom: '1rem', color: 'var(--gray-600)' }}>
+              <strong>
+                Question {currentQuestionIndex + 1} of {total}
+              </strong>{' '}
+              | Marks: +{currentQuestion.marks} | Negative: {currentQuestion.negativeMarks}
+            </div>
+
+            <div className="question-text">{currentQuestion.text}</div>
+
+            {/* Question Input Component */}
+            <QuestionInput
+              question={currentQuestion}
+              answer={userAnswers[currentQuestion.id]}
+              onAnswer={(answer) => answerQuestion(currentQuestion.id, answer)}
+            />
+          </div>
+
+          {/* 3. The Controls */}
+          <div className="exam-controls">
+            <div className="control-left">
+              <button className="btn btn-outline" onClick={clearResponse}>
+                Clear Response
+              </button>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                <input type="checkbox" id="markForReview" checked={isMarked} onChange={toggleMarkForReview} />
+                <span>Mark for Review</span>
+              </label>
+            </div>
+
+            <div className="control-right">
+              <button className="btn btn-outline" disabled={currentQuestionIndex === 0} onClick={() => navigateQuestion(-1)}>
+                ← Previous
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigateQuestion(1)} // 'Save & Next' just navigates
+                disabled={currentQuestionIndex === total - 1}
+              >
+                Save &amp; Next →
+              </button>
+            </div>
+          </div>
+        </div>
+        {isSubmitModalOpen && <SubmitModal onClose={() => setIsSubmitModalOpen(false)} />}
       </div>
-
-      {/* 2. The Main Content */}
-      <div className="exam-main">
-        <div className="exam-header">
-          <div>
-            <h2 style={{ margin: 0 }}>{currentExam.title}</h2>
-            <p style={{ margin: 0, opacity: 0.9, fontSize: '14px' }}>
-              Section: {currentQuestion.section}
-            </p>
-          </div>
-          
-          {/* Timer Component */}
-          <ExamTimer />
-          
-          <button className="btn btn-danger" onClick={() => setIsSubmitModalOpen(true)}>
-            Submit Test
-            </button>
-        </div>
-
-        <div className="exam-content">
-          <div style={{ marginBottom: '1rem', color: 'var(--gray-600)' }}>
-            <strong>Question {currentQuestionIndex + 1} of {total}</strong> |
-            Marks: +{currentQuestion.marks} |
-            Negative: {currentQuestion.negativeMarks}
-          </div>
-
-          <div className="question-text">{currentQuestion.text}</div>
-
-          {/* Question Input Component */}
-          <QuestionInput 
-            question={currentQuestion}
-            answer={userAnswers[currentQuestion.id]}
-            onAnswer={(answer) => answerQuestion(currentQuestion.id, answer)}
-          />
-        </div>
-
-        {/* 3. The Controls */}
-        <div className="exam-controls">
-          <div className="control-left">
-            <button className="btn btn-outline" onClick={clearResponse}>
-              Clear Response
-            </button>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
-              <input
-                type="checkbox"
-                id="markForReview"
-                checked={isMarked}
-                onChange={toggleMarkForReview}
-              />
-              <span>Mark for Review</span>
-            </label>
-          </div>
-          
-          <div className="control-right">
-            <button
-              className="btn btn-outline"
-              disabled={currentQuestionIndex === 0}
-              onClick={() => navigateQuestion(-1)}
-            >
-              ← Previous
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => navigateQuestion(1)} // 'Save & Next' just navigates
-              disabled={currentQuestionIndex === total - 1}
-            >
-              Save &amp; Next →
-            </button>
-          </div>
-        </div>
-      </div>
-      {isSubmitModalOpen && (
-        <SubmitModal 
-            onClose={() => setIsSubmitModalOpen(false)} 
-        />
-        )}
-    </div>
+    </ExamProctor>
   );
 }
 
@@ -168,20 +179,50 @@ function SubmitModal({ onClose }: { onClose: () => void }) {
   const { userAnswers, questions, questionStates } = examState;
   const total = questions.length;
 
-  const answered = Object.values(userAnswers).filter(answer => 
+  const answered = Object.values(userAnswers).filter(answer =>
     answer !== undefined && answer !== '' && (!Array.isArray(answer) || answer.length > 0)
   ).length;
 
   const unanswered = total - answered;
 
-  const marked = Object.values(questionStates).filter(s => 
+  const marked = Object.values(questionStates).filter(s =>
     s === 'marked' || s === 'answered-marked'
   ).length;
 
-  const handleConfirmSubmit = () => {
-    submitExam(); // Call the context function
-    onClose(); // Close the modal
-    router.push('/results'); // Navigate to results page
+  // inside SubmitModal component
+  const handleConfirmSubmit = async () => {
+    try {
+      console.log('[SubmitModal] user confirmed submit');
+
+      // 1) If fullscreen active, exit it first
+      if (document.fullscreenElement) {
+        try {
+          await document.exitFullscreen();
+          console.log('[SubmitModal] exited fullscreen');
+        } catch (err) {
+          console.warn('[SubmitModal] exitFullscreen failed', err);
+        }
+      }
+
+      // 2) small delay so fullscreen/visibility events settle (prevents proctor confusion)
+      await new Promise((r) => setTimeout(r, 220));
+
+      // 3) submit the exam (support async)
+      console.log('[SubmitModal] calling submitExam()');
+      await submitExam();
+      console.log('[SubmitModal] submitExam() finished (awaited)');
+
+      // 4) close modal and navigate
+      onClose();
+      // optionally give the router a small tick so UI updates
+      setTimeout(() => {
+        router.push('/results');
+      }, 50);
+    } catch (err) {
+      console.error('[SubmitModal] submit flow error:', err);
+      // show user-friendly message
+      alert('Something went wrong while submitting. Please try again.');
+    }
   };
 
   return (
@@ -208,7 +249,7 @@ function SubmitModal({ onClose }: { onClose: () => void }) {
 // --- Sub-Component: Question Input ---
 // (Replaces your renderQuestionInput function)
 function QuestionInput({ question, answer, onAnswer }: { question: any, answer: any, onAnswer: (answer: any) => void }) {
-  
+
   switch(question.type) {
     case 'MCQ_SINGLE':
       return (
@@ -217,17 +258,17 @@ function QuestionInput({ question, answer, onAnswer }: { question: any, answer: 
             const optionCode = String.fromCharCode(65 + index); // A, B, C
             const isSelected = answer === optionCode;
             return (
-              <div 
-                key={optionCode} 
-                className={`option ${isSelected ? 'selected' : ''}`} 
+              <div
+                key={optionCode}
+                className={`option ${isSelected ? 'selected' : ''}`}
                 onClick={() => onAnswer(optionCode)}
               >
-                <input 
-                  type="radio" 
-                  name={question.id} 
+                <input
+                  type="radio"
+                  name={question.id}
                   value={optionCode}
-                  checked={isSelected} 
-                  readOnly 
+                  checked={isSelected}
+                  readOnly
                 />
                 <span><strong>{optionCode}.</strong> {option}</span>
               </div>
@@ -238,7 +279,7 @@ function QuestionInput({ question, answer, onAnswer }: { question: any, answer: 
 
     case 'MCQ_MULTI':
       const selectedOptions = answer || [];
-      
+
       const toggleMulti = (optionCode: string) => {
         const currentAnswer = selectedOptions;
         let newAnswer;
@@ -256,13 +297,13 @@ function QuestionInput({ question, answer, onAnswer }: { question: any, answer: 
             const optionCode = String.fromCharCode(65 + index);
             const isSelected = selectedOptions.includes(optionCode);
             return (
-              <div 
-                key={optionCode} 
+              <div
+                key={optionCode}
                 className={`option ${isSelected ? 'selected' : ''}`}
                 onClick={() => toggleMulti(optionCode)}
               >
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   value={optionCode}
                   checked={isSelected}
                   readOnly
@@ -276,19 +317,19 @@ function QuestionInput({ question, answer, onAnswer }: { question: any, answer: 
 
     case 'FILL_BLANK':
       return (
-        <input 
-          type="text" 
+        <input
+          type="text"
           className="input-answer"
           value={answer || ''}
           placeholder="Type your answer here..."
-          onChange={(e) => onAnswer(e.target.value)} 
+          onChange={(e) => onAnswer(e.target.value)}
         />
       );
 
     case 'NUMERIC':
       return (
-        <input 
-          type="number" 
+        <input
+          type="number"
           className="input-answer"
           value={answer || ''}
           placeholder="Enter numerical answer"
@@ -298,7 +339,7 @@ function QuestionInput({ question, answer, onAnswer }: { question: any, answer: 
       );
 
     // ... add other cases like TRUE_FALSE
-      
+
     default:
       return <div>Question type not supported.</div>;
   }
@@ -328,7 +369,7 @@ function PaletteLegend() {
         <div className="legend-box" style={{ background: 'var(--answered-marked)' }}></div>
         <span>Answered & Marked</span>
       </div>
-      
+
     </div>
   );
 }

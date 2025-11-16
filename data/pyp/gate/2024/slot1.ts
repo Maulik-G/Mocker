@@ -3,12 +3,12 @@ import { Mock, Question } from "@/data/type";
 
 export const mock: Mock = {
   id: 202401,
-  title: "GATE CS 2024 – Slot 1 (MCQ + MSQ Only)",
+  title: "GATE CS 2024 – Slot 1",
   category: "GATE",
   durationMin: 130,
   totalMarks: 72,
   questionCount: 49,
-  description: "GATE CS 2024 Slot 1 reconstructed with only MCQ and MSQ questions (NATs removed).",
+  description: "GATE CS 2024 Slot 1 reconstructed with only MCQ and MSQ questions.",
   instructions: `General Instructions
 
 This section consists of Multiple Choice Questions (MCQs) only.
