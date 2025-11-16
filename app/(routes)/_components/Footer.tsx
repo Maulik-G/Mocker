@@ -10,7 +10,7 @@ function Footer() {
     <footer className="bg-[#EEEDF2] lg:grid lg:grid-cols-5 dark:bg-gray-900">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
     <Image 
-      src="/maulik.jpg" // 1. Removed '/public' from the path
+      src="/logo.svg" // 1. Removed '/public' from the path
       alt="Mocker"
       fill={true} // 2. Added fill={true}
       // 3. Removed width and height props
@@ -23,16 +23,12 @@ function Footer() {
       <div>
         <p>
           <span className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-            CALL ME BABYGIRL
+            GO BEYOND.
           </span>
-
-          <a href="#" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl dark:text-white">
-            Mocker
-          </a>
         </p>
 
         <ul className   ="mt-8 space-y-1 text-sm text-gray-700 dark:text-gray-200">
-          <li>Master Your Exams.</li>
+          <li>Mocker is a smart, exam-focused platform that helps you practice with realistic mock tests, track performance with detailed analytics, and improve faster through targeted insights. Built for serious prep — simple, fast, and focused on results.</li>
         </ul>
 
         {/* <ul className="mt-8 flex gap-6">

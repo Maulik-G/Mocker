@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
     <NavBar />
-    <div className="bg-white dark:bg-black">
+    <div className="bg-white dark:bg-black flex items-center justify-center min-h-screen">
       <div className="max-w-3xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100">
           Privacy Policy
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
         
 
         <p className={pStyle + " mt-8"}>
-          Mocker (`we,` `us,` or `our`) is committed to protecting your privacy.
+          Mocker (we, us or our) is committed to protecting your privacy.
           This Privacy Policy explains how we collect, use, disclose, and
           safeguard your information when you use our Service. By using our
           Service, you agree to the collection and use of information in
@@ -176,7 +176,7 @@ export default function PrivacyPolicyPage() {
           <li className={liStyle}>
             By visiting our{" "}
             <Link
-              href="/meet-the-team"
+              href="/team"
               className="text-blue-500 hover:underline"
               >
               Meet the Team

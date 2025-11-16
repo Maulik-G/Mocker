@@ -9,7 +9,31 @@ export const mock: Mock = {
   totalMarks: 72,
   questionCount: 49,
   description: "GATE CS 2024 Slot 1 reconstructed with only MCQ and MSQ questions (NATs removed).",
-  instructions: "Follow official GATE rules. NAT questions excluded.",
+  instructions: `General Instructions
+
+This section consists of Multiple Choice Questions (MCQs) only.
+
+Each MCQ has four options, out of which only one option is correct.
+
+Marks:
+
++1 or +2 marks per question (depending on the original GATE pattern used).
+
+Negative Marking:
+
+For 1-mark MCQ: –1/3 mark for every wrong answer.
+
+For 2-mark MCQ: –2/3 mark for every wrong answer.
+
+No marks will be deducted for unattempted questions.
+
+There are no Numerical Answer Type (NAT) questions in this mock.
+
+Use of calculators, log tables, or external tools is not permitted inside this mock interface.
+
+Choose the most appropriate answer for every question before submitting.
+
+Once submitted, your answers cannot be changed.`,
   sections: [
     { name: "GA", questionCount: 10, marks: 15 },
     { name: "CS-1", questionCount: 39, marks: 57 }

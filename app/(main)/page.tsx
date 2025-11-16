@@ -4,6 +4,8 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 // import { Space } from "lucide-react";
 import Link from "next/link";
 import FAQ from "../(routes)/_components/FAQ";
+
+// import VantaBackground from "@/components/ui/VantaWaves";
 // import FAQ from "../(routes)/_components/FAQ";
 // import NavBar from "../(routes)/_components/NavBar"
 // import { CardSpotlight } from "@/components/ui/card-spotlight";
@@ -12,14 +14,14 @@ const words = `Practice. Analyze. Improve. Succeed.`;
 export default function Home() {
   return (
     <main>
-    
       <div className="container mx-auto px-4 items-center justify-center text-center py-20">
           <div className="hero">
             <h1>Mocker - Master Your Exams</h1>
             <TextGenerateEffect words={words} />
             <p>Practice with real exam-style mock tests and track your performance</p>
           </div>
-          
+
+        
           <div className="category-grid">
             <div className="category-card" >
               <Link href="/mocks?category=CAT">
@@ -50,7 +52,6 @@ export default function Home() {
           </div>
           <FAQ />
         </div>
-              
     </main>
   );
 }

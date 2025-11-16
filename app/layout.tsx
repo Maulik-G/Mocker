@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mocker",
   description: "Master Your Exams",
+  icons: {
+    icon: "/logo-icon.svg",
+  } 
 };
 
 export default function RootLayout({

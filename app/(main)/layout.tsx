@@ -31,8 +31,8 @@ export default function MainLayout({
       
       {/* 3. The footer will now be pushed to the bottom */}
       
-    </div>
       <Footer />
+    </div>
     </>
   );
 }

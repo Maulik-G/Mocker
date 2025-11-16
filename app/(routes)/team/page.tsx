@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Script from "next/script";
 // 1. Import social icons
 import { BriefcaseBusiness, Github, Linkedin } from "lucide-react";
 // 2. FIX: Use correct relative paths for all imports
@@ -26,9 +27,10 @@ interface GridItemProps {
   socials?: SocialLink[]; // Added socials prop
 }
 
+
 const GridItem = ({ area, title, description, image, socials }: GridItemProps) => {
   return (
-    <li className={`min-h-[14rem] list-none ${area} `}>
+    <li className={`min-h-[10rem] list-none ${area} `}>
       <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3 ">
         <GlowingEffect
           blur={0}
@@ -39,10 +41,10 @@ const GridItem = ({ area, title, description, image, socials }: GridItemProps) =
           proximity={64}
           inactiveZone={0.01}
         />
-        <div className="border-0.75 bg-black  relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl mt-20 p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
-          <div className="relative flex flex-1 flex-col justify-between gap-3">
+        <div className="border-0.75 bg-[#E8F4FF]  relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl mt-6 p-4 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+          <div className="relative flex flex-1 flex-col justify-between gap-2">
         
-            <div className="space-y-3">
+            <div className="space-y-2">
               <h3 className="-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance text-black md:text-2xl/[1.875rem] dark:text-white">
                 {title}
               </h3>
@@ -77,8 +79,8 @@ const GridItem = ({ area, title, description, image, socials }: GridItemProps) =
           */}
           <Image src={image} 
             alt={title}
-            width={1000}
-            height={100}
+            width={800}
+            height={200}
             className="rounded-lg object-cover object-position-top w-full mt-4 "
             />
         </div>
@@ -86,22 +88,18 @@ const GridItem = ({ area, title, description, image, socials }: GridItemProps) =
     </li>
   );
 };
-
 // 6. This is the new, full-page component
 export default function Team() {
   return (
-    // ---
-    // FIX #1: Use flex-col and min-h-screen for sticky footer layout
-    // ---
+    <>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" />
+    <Script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js" />
+
+
     <div className="flex flex-col min-h-screen dark:bg-black">
       <NavBar />
 
-      {/* ---
-        FIX #2: Use 'flex-grow' to push footer down
-              'pt-28' for gap below navbar
-              Removed 'justify-center'
-        ---
-      */}
+      
       <main className="w-full flex-grow flex flex-col items-center mt-20 pt-28 pb-24 px-4">
         {/* ---
           FIX #3: Increased margin-bottom to mb-20 for more space
@@ -146,8 +144,9 @@ export default function Team() {
           
         </ul>
       </main>
-
+      
       <Footer />
     </div>
+    </> 
   );
 }
