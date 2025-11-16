@@ -14,14 +14,14 @@ import ScrollingReviews from "@/components/ui/ScrollingReviews";
 const words = `Practice. Analyze. Improve. Succeed.`;
 
 const REVIEWS_A = [
-  { id: 1, reviewer: "Maulik", role: "Student", rating: 5, text: "Mocker is a great app — nice UX and fast tests." },
+  { id: 1, reviewer: "Maulik", role: "SDE Job Seeker", rating: 5, text: "Personally liked the interface and had fun while developing this." },
   { id: 2, reviewer: "Aisha", role: "SDE Intern", rating: 5, text: "The feedback is detailed and helped me improve a lot." },
   { id: 3, reviewer: "Vikram", role: "Final Year", rating: 4, text: "Good mocks, some questions felt tricky." },
   { id: 4, reviewer: "Rohit", role: "Student", rating: 5, text: "Loved the motion and the review screen." },
 ];
 
 const REVIEWS_B = [
-  { id: 11, reviewer: "Priya", role: "Student", rating: 5, text: "Perfect for last-minute practice." },
+  { id: 11, reviewer: "Monalisha Kalita", role: "Student", rating: 5, text: "Smooth UI. Useful platform." },
   { id: 12, reviewer: "Karan", role: "Developer", rating: 4, text: "UI is clean — performance could improve on mobile." },
   { id: 13, reviewer: "Sana", role: "Graduate", rating: 5, text: "Great question quality and analysis." },
   { id: 14, reviewer: "Sana", role: "Graduate", rating: 5, text: "Great question quality and analysis." },
