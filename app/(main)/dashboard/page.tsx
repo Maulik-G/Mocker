@@ -1,6 +1,7 @@
 // app/(main)/dashboard/page.tsx
 // Note: this is a Server Component (no "use client" at top)
 
+
 import React from 'react';
 import { auth } from '@clerk/nextjs/server';
 import { PrismaClient, Prisma } from '@prisma/client';
@@ -51,9 +52,11 @@ export default async function DashboardPage({
     let matchingMocks: Array<{ title: string }> = [];
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const clientAny = prisma as any;
       if (clientAny && clientAny.mock && typeof clientAny.mock.findMany === 'function') {
         matchingMocks = await clientAny.mock.findMany({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           where: { category: { equals: normalizedCategory, mode: 'insensitive' } } as any,
           select: { title: true },
         });
@@ -76,6 +79,7 @@ export default async function DashboardPage({
       whereClause = {
         userId,
         OR: titleFilters,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any;
 
     } else {
@@ -85,6 +89,7 @@ export default async function DashboardPage({
       whereClause = {
         userId,
         mockTitle: { contains: normalizedCategory, mode: 'insensitive' },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any;
     }
     // --- END OF CORRECTED LOGIC ---
