@@ -1,409 +1,440 @@
-// import { Mock, Question } from '../type';
-// export const mock: Mock = {
-//   id: 4,
-//   title: "Python Programming MCQ Mock Test",
-//   category: "PYTHON",
-//   durationMin: 30,
-//   totalMarks: 90, // 30 × 3 marks
-//   questionCount: 30,
-//   description: "Randomized Python programming MCQs for practice.",
-//   instructions: "Each question has one correct answer. Select the best option.",
-//   sections: [
-//     { name: "Python", questionCount: 30, marks: 90 }
-//   ],
-// };
-//   export const questions: Question[] = [
+import { Mock, Question } from '../type';
 
-//     /* Q1 */
-//     {
-//       id: 1,
-//       qOrder: 1,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(type([]))?",
-//       options: ["<class 'list'>", "<class 'tuple'>", "<class 'set'>", "<class 'dict'>"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1,
-//       explanation: "In Python, [] denotes a list, so type([]) returns <class 'list'>.",
-//     },
+export const mock: Mock = {
+  id: 10,
+  title: "Python Programming MCQ Mock Test",
+  category: "TECH",
+  durationMin: 30,
+  totalMarks: 90,
+  questionCount: 30,
+  description: "30 MCQs on Python programming fundamentals.",
+  instructions: "Each question has one correct option.",
 
-//     /* Q2 */
-//     {
-//       id: 2,
-//       qOrder: 2,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which keyword is used to define a function in Python?",
-//       options: ["func", "define", "def", "lambda"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  sections: [
+    { name: "Python", questionCount: 30, marks: 90 }
+  ],
+};
 
-//     /* Q3 */
-//     {
-//       id: 3,
-//       qOrder: 3,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of the following is immutable?",
-//       options: ["list", "set", "tuple", "dictionary"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+export const questions: Question[] = [
 
-//     /* Q4 */
-//     {
-//       id: 4,
-//       qOrder: 4,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of: print(3 * 'ab')?",
-//       options: ["ab3", "ababab", "aaabbb", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 1,
+    qOrder: 1,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which function is used to output data in Python?",
+    options: ["echo()", "printf()", "print()", "display()"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "print() is the correct function used to display output."
+  },
 
-//     /* Q5 */
-//     {
-//       id: 5,
-//       qOrder: 5,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which method is used to add an element to a list?",
-//       options: ["append()", "add()", "push()", "insertFirst()"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1,
-//       explanation: "The append() method adds an element to the end of a list."
-//     },
+  {
+    id: 2,
+    qOrder: 2,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which function returns the number of items in a list?",
+    options: ["size()", "len()", "count()", "length()"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "len() returns the total number of elements in a list."
+  },
 
-//     /* Q6 */
-//     {
-//       id: 6,
-//       qOrder: 6,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(bool(''))?",
-//       options: ["True", "False", "None", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 3,
+    qOrder: 3,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which method adds an element to the end of a list?",
+    options: ["push()", "append()", "add()", "insert()"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "append() adds a new item to the end of a list."
+  },
 
-//     /* Q7 */
-//     {
-//       id: 7,
-//       qOrder: 7,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which operator is used for exponentiation?",
-//       options: ["^", "", "//", "%%"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 4,
+    qOrder: 4,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which keyword is used to define a function?",
+    options: ["func", "define", "def", "function"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "Functions in Python are defined using the 'def' keyword."
+  },
 
-//     /* Q8 */
-//     {
-//       id: 8,
-//       qOrder: 8,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(len({'a':1,'b':2,'c':3}))?",
-//       options: ["6", "3", "2", "1"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 5,
+    qOrder: 5,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "What is the output of range(5)?",
+    options: ["0 to 5", "1 to 5", "0 to 4", "5 values starting from 1"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "range(5) generates 0,1,2,3,4."
+  },
 
-//     /* Q9 */
-//     {
-//       id: 9,
-//       qOrder: 9,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of the following is NOT a valid Python loop?",
-//       options: ["for", "foreach", "while", "nested for"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 6,
+    qOrder: 6,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which datatype stores key-value pairs?",
+    options: ["list", "tuple", "dictionary", "set"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "A dictionary stores data as key-value pairs."
+  },
 
-//     /* Q10 */
-//     {
-//       id: 10,
-//       qOrder: 10,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What does the strip() function do?",
-//       options: ["Removes spaces at both ends", "Removes characters randomly", "Splits a string", "Deletes the string"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 7,
+    qOrder: 7,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which operator checks value equality?",
+    options: ["is", "==", "equals()", "==="],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "== checks if two values are equal."
+  },
 
-//     /* Q11 */
-//     {
-//       id: 11,
-//       qOrder: 11,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(10//3)?",
-//       options: ["3.33", "3", "4", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 8,
+    qOrder: 8,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which keyword exits a loop immediately?",
+    options: ["continue", "stop", "exit", "break"],
+    correctAnswer: "d",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "break stops the entire loop immediately."
+  },
 
-//     /* Q12 */
-//     {
-//       id: 12,
-//       qOrder: 12,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which function converts a value into an integer?",
-//       options: ["str()", "int()", "float()", "char()"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 9,
+    qOrder: 9,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which statement handles errors in Python?",
+    options: ["try-except", "catch", "handler", "trap"],
+    correctAnswer: "a",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "try-except is used for error handling in Python."
+  },
 
-//     /* Q13 */
-//     {
-//       id: 13,
-//       qOrder: 13,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of: print(type({1,2,3}))?",
-//       options: ["<class 'list'>", "<class 'set'>", "<class 'tuple'>", "<class 'dict'>"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 10,
+    qOrder: 10,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which module must be imported to use mathematical functions?",
+    options: ["math", "cmath", "numbers", "random"],
+    correctAnswer: "a",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "The math module provides mathematical functions."
+  },
 
-//     /* Q14 */
-//     {
-//       id: 14,
-//       qOrder: 14,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which statement is used to handle exceptions?",
-//       options: ["except", "error", "try-except", "catch"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 11,
+    qOrder: 11,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Python blocks are defined by:",
+    options: ["Braces {}", "Semicolons", "Indentation", "Parentheses"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "Python uses indentation to define code blocks."
+  },
 
-//     /* Q15 */
-//     {
-//       id: 15,
-//       qOrder: 15,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of the following is used to create an anonymous function?",
-//       options: ["def", "lambda", "func", "anon"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 12,
+    qOrder: 12,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which datatype is immutable?",
+    options: ["list", "tuple", "set", "dictionary"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "Tuples cannot be changed after creation."
+  },
 
-//     /* Q16 */
-//     {
-//       id: 16,
-//       qOrder: 16,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the correct file extension for Python files?",
-//       options: [".py", ".python", ".pyt", ".pt"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 13,
+    qOrder: 13,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "list[1:4] returns elements from index:",
+    options: ["1 to 4", "1 to 3", "0 to 3", "2 to 4"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "Slicing stops one step before the end index."
+  },
 
-//     /* Q17 */
-//     {
-//       id: 17,
-//       qOrder: 17,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which function is used to display output in Python?",
-//       options: ["write()", "printf()", "print()", "console.log()"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 14,
+    qOrder: 14,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which datatype represents decimal values?",
+    options: ["float", "bool", "int", "string"],
+    correctAnswer: "a",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "float stores decimal numbers."
+  },
 
-//     /* Q18 */
-//     {
-//       id: 18,
-//       qOrder: 18,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which data type is returned by input() function?",
-//       options: ["int", "float", "str", "list"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 15,
+    qOrder: 15,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which keyword creates an anonymous function?",
+    options: ["anon", "lambda", "func", "mini"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "lambda creates small, inline functions."
+  },
 
-//     /* Q19 */
-//     {
-//       id: 19,
-//       qOrder: 19,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of the following can be used to iterate over both index and value?",
-//       options: ["items()", "keys()", "enumerate()", "range()"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 16,
+    qOrder: 16,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which function opens a file?",
+    options: ["file()", "open()", "read()", "openfile()"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "open() is used for file handling."
+  },
 
-//     /* Q20 */
-//     {
-//       id: 20,
-//       qOrder: 20,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which keyword is used to create a class?",
-//       options: ["struct", "class", "object", "define class"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 17,
+    qOrder: 17,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which keyword returns a value from a function?",
+    options: ["exit", "yield", "return", "give"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "return sends output back to the caller."
+  },
 
-//     /* Q21 */
-//     {
-//       id: 21,
-//       qOrder: 21,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print('abc'[::-1])?",
-//       options: ["abc", "cba", "bac", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 18,
+    qOrder: 18,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "List comprehension is used for:",
+    options: ["Creating loops", "Short list creation", "Sorting lists", "Filtering data only"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "List comprehension is a compact way to create lists using loops."
+  },
 
-//     /* Q22 */
-//     {
-//       id: 22,
-//       qOrder: 22,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of these is NOT a Python data type?",
-//       options: ["list", "set", "vector", "tuple"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 19,
+    qOrder: 19,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "What is the value of None?",
+    options: ["0", "Empty string", "Null equivalent", "False"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "None represents the absence of a value."
+  },
 
-//     /* Q23 */
-//     {
-//       id: 23,
-//       qOrder: 23,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of the following opens a file for reading?",
-//       options: ["open('file','r')", "open('file','w')", "open('file','x')", "open('file','rw')"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 20,
+    qOrder: 20,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Strings in Python are:",
+    options: ["Mutable", "Immutable", "Numeric", "Logical"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "String content cannot be modified directly."
+  },
 
-//     /* Q24 */
-//     {
-//       id: 24,
-//       qOrder: 24,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(2 == '2')?",
-//       options: ["True", "False", "None", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 21,
+    qOrder: 21,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which function gives index + value while iterating?",
+    options: ["items()", "enumerate()", "zip()", "index()"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "enumerate() returns both index and value."
+  },
 
-//     /* Q25 */
-//     {
-//       id: 25,
-//       qOrder: 25,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is used to install external packages in Python?",
-//       options: ["python get", "pip", "installpkg", "manager"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 22,
+    qOrder: 22,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which method applies a function to each list element?",
+    options: ["apply()", "map()", "reduce()", "lambda()"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "map() applies a function to each item of an iterable."
+  },
 
-//     /* Q26 */
-//     {
-//       id: 26,
-//       qOrder: 26,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(3 > 2 and 2 > 5)?",
-//       options: ["True", "False", "None", "Error"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 23,
+    qOrder: 23,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which keyword defines a class?",
+    options: ["object", "define", "class", "struct"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "Classes in Python begin with the 'class' keyword."
+  },
 
-//     /* Q27 */
-//     {
-//       id: 27,
-//       qOrder: 27,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which of these is used to define a block of code?",
-//       options: ["{}", "()", "Indentation", "Brackets"],
-//       correctAnswer: "c",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 24,
+    qOrder: 24,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "super() is used for:",
+    options: ["Calling child methods", "Memory allocation", "Calling parent class methods", "Closing program"],
+    correctAnswer: "c",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "super() accesses parent class properties/methods."
+  },
 
-//     /* Q28 */
-//     {
-//       id: 28,
-//       qOrder: 28,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which module is used for generating random numbers?",
-//       options: ["random", "math", "numbers", "statistics"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 25,
+    qOrder: 25,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "*args is used for:",
+    options: ["Keyword arguments", "Storing unlimited positional arguments", "Defining classes", "Modules"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "*args collects variable-length positional arguments."
+  },
 
-//     /* Q29 */
-//     {
-//       id: 29,
-//       qOrder: 29,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "What is the output of print(type(range(5)))?",
-//       options: ["<class 'range'>", "<class 'list'>", "<class 'tuple'>", "<class 'generator'>"],
-//       correctAnswer: "a",
-//       marks: 3,
-//       negativeMarks: -1
-//     },
+  {
+    id: 26,
+    qOrder: 26,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "Which tool installs Python packages?",
+    options: ["npm", "pip", "conda", "install"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "pip is Python's default package installer."
+  },
 
-//     /* Q30 */
-//     {
-//       id: 30,
-//       qOrder: 30,
-//       section: "Python",
-//       type: "MCQ_SINGLE",
-//       text: "Which keyword is used to exit a loop?",
-//       options: ["exit", "break", "stop", "quit"],
-//       correctAnswer: "b",
-//       marks: 3,
-//       negativeMarks: -1
-//     }
+  {
+    id: 27,
+    qOrder: 27,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "_init_ is:",
+    options: ["Destructor", "Constructor", "Iterator", "Operator"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "_init_ runs automatically when an object is created."
+  },
 
-//   ];
+  {
+    id: 28,
+    qOrder: 28,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "json.loads() converts:",
+    options: ["Python → JSON", "JSON → Python object", "String → CSV", "Dict → CSV"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "loads() converts JSON string into Python objects."
+  },
+
+  {
+    id: 29,
+    qOrder: 29,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "The pass statement is used to:",
+    options: ["Break loop", "Do nothing", "Stop program", "Skip import"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "pass does nothing and is used as a placeholder."
+  },
+
+  {
+    id: 30,
+    qOrder: 30,
+    mockId: 10,
+    section: "Python",
+    type: "MCQ_SINGLE",
+    text: "random.randint(a, b) returns:",
+    options: ["Float", "Value between a & b inclusive", "Value > b", "Only a"],
+    correctAnswer: "b",
+    marks: 3,
+    negativeMarks: -1,
+    explanation: "randint() returns a random integer including both limits."
+  }
+
+];

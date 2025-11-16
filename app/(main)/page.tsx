@@ -42,10 +42,10 @@ export default function Home() {
             </div>
             
             <div className="category-card" >
-              <Link href="/mocks?category=CUSTOM">
+              <Link href="/mocks?category=TECH">
                 <div className="category-icon">✏️</div>
-                <h2>Custom Mocks</h2>
-                <p>Create and practice custom mock tests tailored to your specific preparation needs.</p>
+                <h2>Tech Mocks</h2>
+                <p>Give tech mocks and track your progress with detailed analytics.</p>
                 <button className="btn btn-primary">View Mocks</button>
               </Link>
             </div>

@@ -6,12 +6,23 @@ import * as cat2024slot1 from './pyp/cat/2024/slot1/varc';
 import * as cat2024slot1_quant from './pyp/cat/2024/slot1/qa';
 import * as gate2025slot1 from './pyp/gate/2025/slot1';
 import * as gate2024slot1 from './pyp/gate/2024/slot1';
+import * as webDev from './mocks/web-dev';
+import * as dsa from './mocks/dsa';
+import * as dataAnalysis from './mocks/data-analysis';
+import * as cpp from './mocks/cpp';
+import * as python from './mocks/python';
+
 // 2. Combine them into the two arrays your app expects
 const allMocks: Mock[] = [
   cat2024slot1.mock,
   cat2024slot1_quant.mock,
   gate2025slot1.mock,
   gate2024slot1.mock,
+  webDev.mock,
+  dsa.mock,
+  dataAnalysis.mock,
+  cpp.mock,  
+  python.mock,
   // ... add other mocks here
 ];
 
@@ -20,6 +31,11 @@ const allQuestions: Question[] = [
   ...cat2024slot1_quant.questions,
   ...gate2025slot1.questions,   
   ...gate2024slot1.questions,
+  ...webDev.questions,
+  ...dsa.questions,
+  ...dataAnalysis.questions,
+  ...cpp.questions,
+  ...python.questions,
   // ... add other questions here
 ];
 

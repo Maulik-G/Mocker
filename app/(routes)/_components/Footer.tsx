@@ -1,5 +1,5 @@
 import React from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
 
 function Footer() {
@@ -9,6 +9,7 @@ function Footer() {
   return (
     <footer className="bg-[#EEEDF2] lg:grid lg:grid-cols-5 dark:bg-gray-900">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
+    <Link href="/">
     <Image 
       src="/logo.svg" // 1. Removed '/public' from the path
       alt="Mocker"
@@ -16,6 +17,7 @@ function Footer() {
       // 3. Removed width and height props
       className="absolute inset-0 h-full w-full object-cover" 
     />
+    </Link>
   </div>
 
   <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">

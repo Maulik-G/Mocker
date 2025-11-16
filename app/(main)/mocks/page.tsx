@@ -54,10 +54,10 @@ export default function MockListingPage() {
           GATE
         </button>
         <button
-          className={`filter-btn ${filterCategory === 'CUSTOM' ? 'active' : ''}`}
-          onClick={() => setFilterCategory('CUSTOM')}
+          className={`filter-btn ${filterCategory === 'TECH' ? 'active' : ''}`}
+          onClick={() => setFilterCategory('TECH')}
         >
-          Custom
+          Tech
         </button>
       </div>
 

@@ -11,7 +11,7 @@ export interface Section {
 export interface Mock {
   id: number;
   title: string;
-  category: "CAT" | "GATE" | "CUSTOM"; // Enforce categories
+  category: "CAT" | "GATE" | "TECH"; // Enforce categories
   durationMin: number;
   totalMarks: number;
   questionCount: number;
