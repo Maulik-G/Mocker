@@ -19,12 +19,14 @@
   --gray-800: #1f2937;
   --gray-900: #0f172a;
 
-  /* Question Status Colors - tuned to blue family */
-  --not-visited: #94a3b8;        /* soft slate */
-  --not-answered: #ffffff;
-  --answered: #3b82f6;           /* blue-500 */
-  --marked: #f59e0b;
-  --answered-marked: #2563eb;    /* blue-600 */
+/* Question Status Colors - OFFICIAL EXAM PALETTE */
+ --not-visited: #f0f0f0;         /* Light Grey */
+ --not-answered: #dc3545;        /* Red */
+ --answered: #28a745;          /* Green */
+ --marked: #6f42c1;              /* Purple */
+ --answered-marked: #6f42c1;     /* Purple (for the box) */
+  --answered-marked-dot: #28a745; /* Green (for the dot) */
+ --active-question: #ffffff;     /* White */
 
   --radius: 0.625rem;
   --radius-sm: 4px;
@@ -186,16 +188,79 @@ nav{
 .legend-item{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;}
 .legend-box{width:20px;height:20px;border-radius:4px;border:2px solid var(--gray-300);}
 
-.question-palette{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;}
-.palette-btn{aspect-ratio:1;border:2px solid var(--gray-300);border-radius:var(--radius-sm);background:white;cursor:pointer;font-weight:600;transition:all .2s;}
-.palette-btn:hover{transform:scale(1.05);}
-.palette-btn.active{border-width:3px;border-color:var(--gray-900);}
+.question-palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
 
-.palette-btn.not-visited{background:var(--not-visited);color:white;}
-.palette-btn.not-answered{background:var(--not-answered);}
-.palette-btn.answered{background:var(--answered);color:white;}
-.palette-btn.marked{background:var(--marked);color:white;}
-.palette-btn.answered-marked{background:var(--answered-marked);color:white;}
+/* 1. Base Button Style ("Not Visited") 
+   This combines your layout styles with the default color
+*/
+.palette-btn {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: var(--not-visited); /* Light Grey */
+  color: #333; /* Dark text */
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  position: relative; /* Needed for the dot */
+}
+
+.palette-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 2. "Not Answered" (Red) */
+.palette-btn.not-answered {
+  background-color: var(--not-answered);
+  color: white;
+  border-color: var(--not-answered);
+}
+
+/* 3. "Answered" (Green) */
+.palette-btn.answered {
+  background-color: var(--answered);
+  color: white;
+  border-color: var(--answered);
+}
+
+/* 4. "Marked for Review" (Purple) */
+.palette-btn.marked {
+  background-color: var(--marked);
+  color: white;
+  border-color: var(--marked);
+}
+
+/* 5. "Answered & Marked" (Purple + Green Dot) */
+.palette-btn.answered-marked {
+  background-color: var(--answered-marked);
+  color: white;
+  border-color: var(--answered-marked);
+}
+
+/* THIS IS THE GREEN DOT */
+.palette-btn.answered-marked::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--answered-marked-dot);
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+/* 6. "Active Question" (White) */
+.palette-btn.active {
+  background-color: var(--active-question);
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
 
 .exam-main{display:flex;flex-direction:column;background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
 .exam-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;background:var(--gray-900);color:white;}
