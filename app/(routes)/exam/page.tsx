@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useExam } from '@/context/ExamContext'; // Import our hook
+import { useExamStore } from '@/store/exam-store';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ExamProctor from '@/components/exam/ExamProctor';
@@ -10,14 +10,14 @@ import ExamProctor from '@/components/exam/ExamProctor';
 // Main Exam Page Component
 export default function ExamPage() {
   const {
-    examState,
     jumpToQuestion,
     navigateQuestion,
     clearResponse,
     toggleMarkForReview,
     answerQuestion,
-    submitExam, // merged into single useExam call
-  } = useExam();
+    submitExam,
+  } = useExamStore();
+  const examState = useExamStore();
 
   const router = useRouter();
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false); // <-- Add this
@@ -29,6 +29,16 @@ export default function ExamPage() {
       router.replace('/mocks'); // Go back to mocks if no exam is active
     }
   }, [currentExam, router]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (currentExam && !examState.isSubmitted) {
+      interval = setInterval(() => {
+        useExamStore.getState().tickTimer();
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [currentExam, examState.isSubmitted]);
 
   if (!currentExam) {
     return <div>Loading exam...</div>; // Or a loading spinner
@@ -153,8 +163,7 @@ export default function ExamPage() {
 // (Replaces your updateTimerDisplay and startTimer logic)
 // --- Sub-Component: Timer (Simplified) ---
 function ExamTimer() {
-  const { examState } = useExam();
-  const { timeRemaining } = examState;
+  const timeRemaining = useExamStore(state => state.timeRemaining);
 
   // Format the time
   const hours = Math.floor(timeRemaining / 3600);
@@ -172,11 +181,9 @@ function ExamTimer() {
 
 // --- Sub-Component: Submit Modal ---
 function SubmitModal({ onClose }: { onClose: () => void }) {
-  const { examState, submitExam } = useExam();
+  const examState = useExamStore();
+  const { submitExam, userAnswers, questions, questionStates } = examState;
   const router = useRouter();
-
-  // Get stats (this replaces your calculation logic in showSubmitModal)
-  const { userAnswers, questions, questionStates } = examState;
   const total = questions.length;
 
   const answered = Object.values(userAnswers).filter(answer =>

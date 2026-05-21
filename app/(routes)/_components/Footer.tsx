@@ -1,145 +1,40 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Github, Twitter, Linkedin } from 'lucide-react';
 
 function Footer() {
-
-
-    
   return (
-    <footer className="bg-[#EEEDF2] lg:grid lg:grid-cols-5 dark:bg-gray-900">
-  <div className="relative block h-32 lg:col-span-2 lg:h-full">
-    <Link href="/">
-    <Image 
-      src="/logo.svg" // 1. Removed '/public' from the path
-      alt="Mocker"
-      fill={true} // 2. Added fill={true}
-      // 3. Removed width and height props
-      className="absolute inset-0 h-full w-full object-cover" 
-    />
-    </Link>
-  </div>
+    <footer className="bg-white border-t border-gray-100 dark:bg-gray-950 dark:border-gray-900 py-12">
+      <div className="max-w-[1280px] mx-auto px-6 flex flex-col items-center text-center">
 
-  <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-      <div>
-        <p>
-          <span className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-            GO BEYOND.
-          </span>
+        <Link href="/" className="flex items-center gap-2 mb-6 hover:opacity-90 transition-opacity">
+          <div className="relative h-10 w-10">
+            <Image src="/logo-icon.svg" alt="Mocker" fill className="object-contain" />
+          </div>
+          <span className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Mocker</span>
+        </Link>
+
+        <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-gray-400 mb-8">
+          Practice. Analyze. Improve. Succeed.<br />Your ultimate exam preparation platform.
         </p>
 
-        <ul className   ="mt-8 space-y-1 text-sm text-gray-700 dark:text-gray-200">
-          <li>Mocker is a smart, exam-focused platform that helps you practice with realistic mock tests, track performance with detailed analytics, and improve faster through targeted insights. Built for serious prep — simple, fast, and focused on results.</li>
+        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium text-gray-600 dark:text-gray-300">
+          <li><Link href="/team" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Meet the Team</Link></li>
+          <li><Link href="/privacy-policy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+          <li><Link href="/terms" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms & Conditions</Link></li>
         </ul>
 
-        
-      </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <p className="font-medium text-gray-900 dark:text-white">Services</p>
 
-          <ul className="mt-6 space-y-4 text-sm">
-            <li>
-              <a href="/terms" className ="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Terms & Conditions
-              </a>
-            </li>
-
-            <li>
-              <a href="/privacy-policy" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Privacy Policy
-              </a>
-            </li>
-
-            {/* <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Company Review
-              </a>
-            </li> */}
-
-            {/* <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Accounts Review
-              </a>
-            </li> */}
-
-            {/* <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                HR Consulting
-              </a>
-            </li> */}
-
-            {/* <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                SEO Optimisation
-              </a>
-            </li> */}
-          </ul>
-        </div>
-
-        <div>
-          <p className="font-medium text-gray-900 dark:text-white">Company</p>
-
-          <ul className="mt-6 space-y-4 text-sm">
-            <li>
-              <a href="" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a href="team" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Meet the Team
-              </a>
-            </li>
-
-            {/* <li>
-              <a href="privacy-policy" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Privacy Policy
-              </a>
-            </li>
-
-            <li>
-              <a href="terms" className="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                Terms & Conditions
-              </a>
-            </li>
-             */}
-          </ul>
+        <div className="w-full max-w-2xl border-t border-gray-100 dark:border-gray-800/50 pt-8">
+          <p className="text-xs text-gray-400 dark:text-gray-500">
+            &copy; {new Date().getFullYear()} Mocker. All rights reserved.
+          </p>
         </div>
       </div>
-    </div>
-
-    <div className="mt-12 border-t border-gray-100 pt-12 dark:border-gray-800">
-      <div className="sm:flex sm:items-center sm:justify-between">
-        <ul className="flex flex-wrap gap-4 text-xs">
-          {/* <li>
-            <a
-                href="/terms"
-                className="text-gray-500 transition hover:opacity-75 dark:text-gray-400"
-              >
-                Terms & Conditions
-              </a>
-          </li>
-
-          <li>
-            <a href="/privacy-policy" className="text-gray-500 transition hover:opacity-75 dark:text-gray-400">
-              Privacy Policy
-            </a>
-          </li> */}
-        </ul>
-
-        <p className="mt-8 text-xs text-gray-500 sm:mt-0 dark:text-gray-400">
-          © 2025. MG & Co. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-  )
+    </footer>
+  );
 }
 
-export default Footer
-// app/(main)/mocks/page.tsx
+export default Footer;

@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useExam } from '@/context/ExamContext';
+import { useExamStore } from '@/store/exam-store';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { PieChartComponent } from '../_components/PieChart';
@@ -36,8 +36,7 @@ function formatTime(totalSeconds: number) {
 }
 
 export default function ResultsPage() {
-  const { examState } = useExam();
-  const { results } = examState;
+  const results = useExamStore(state => state.results);
   const router = useRouter();
   
   useEffect(() => {

@@ -5,14 +5,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // <-- No useSearchParams
 import Link from 'next/link';
 
-import { useExam } from '@/context/ExamContext';
+import { useExamStore } from '@/store/exam-store';
 import { DEMO_DATA } from '@/data';
 
 // 1. Remove the Suspense wrapper
 // 2. Accept mockId as a prop
 export default function InstructionsClient({ mockId }: { mockId: string }) {
   const router = useRouter();
-  const { startExam } = useExam();
+  const startExam = useExamStore(state => state.startExam);
   
   // 3. Use the prop, not searchParams
   const mock = DEMO_DATA.mocks.find(m => m.id === Number(mockId));

@@ -25,7 +25,7 @@ function Star({ filled }: { filled: boolean }) {
   );
 }
 
-export default function EnhancedReviewCard({ review }: { review: Review }) {
+export default function EnhancedReviewCard({ review, className }: { review: Review; className?: string }) {
   const stars = new Array(5).fill(0);
   return (
     <motion.article
@@ -34,8 +34,8 @@ export default function EnhancedReviewCard({ review }: { review: Review }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.03, rotateX: 2, rotateY: -2 }}
       transition={{ type: "spring", stiffness: 110, damping: 14 }}
-      className="w-72 min-w-[18rem] bg-gradient-to-br from-white/70 to-white/50 dark:from-gray-800/70 dark:to-gray-800/60
-                 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-blue-400/50 dark:border-blue-600/50 transform-gpu"
+      className={`w-72 min-w-[18rem] bg-gradient-to-br from-white/70 to-white/50 dark:from-gray-800/70 dark:to-gray-800/60
+                 backdrop-blur-md rounded-2xl shadow-2xl p-6 border border-blue-400/50 dark:border-blue-600/50 transform-gpu ${className || ""}`}
       style={{
         // subtle layered shadow
         boxShadow:
@@ -82,8 +82,6 @@ export default function EnhancedReviewCard({ review }: { review: Review }) {
       <p className="mt-3 text-sm text-gray-700 dark:text-gray-200 leading-snug h-16 overflow-hidden">
         {review.text}
       </p>
-
-      <div className="mt-3 text-xs text-gray-500 dark:text-gray-400">Reviewed • {new Date().toLocaleDateString()}</div>
     </motion.article>
   );
 }

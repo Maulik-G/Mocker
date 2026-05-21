@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import './globals.css';
-import { ExamProvider } from "@/context/ExamContext";
+
 import { ClerkProvider } from "@clerk/nextjs";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
 });
 
@@ -90,7 +90,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased`}
         >
           {/* --- ADD THIS SCRIPT TAG --- */}
           <script
@@ -99,10 +99,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           />
           {/* --- END ADD --- */}
           
-          <ExamProvider>
-            {/* Using <main> is better for accessibility and SEO */}
-            <main>{children}</main> 
-          </ExamProvider>
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>
