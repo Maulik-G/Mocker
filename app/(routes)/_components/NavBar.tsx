@@ -4,13 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image';
 import { 
   SignInButton,  
-  SignedIn, 
-  SignedOut, 
-  UserButton 
+  UserButton,
+  useAuth
 } from '@clerk/nextjs';
 import "@/app/globals.css"
 
 function NavBar() {
+  const { isSignedIn, isLoaded } = useAuth();
+
   return (
       <nav> 
         <div className="nav-container">
@@ -28,20 +29,21 @@ function NavBar() {
             {/* Use the 'href' prop for the destination path */}
             <Link href="/">Home</Link>
             <Link href="/mocks">Mocks</Link>
-            <SignedIn>
-            <Link href="/dashboard">Dashboard</Link>
-            {/* The UserButton shows  a profile icon and menu */}
-            <UserButton afterSignOutUrl="/" /> 
-            </SignedIn>
+            {isLoaded && isSignedIn && (
+              <>
+                <Link href="/dashboard">Dashboard</Link>
+                {/* The UserButton shows a profile icon and menu */}
+                <UserButton /> 
+              </>
+            )}
           
-            <SignedOut>
-            
+            {isLoaded && !isSignedIn && (
               <SignInButton mode="modal">
                 <button className="btn btn-primary">
                   Login
                 </button>
               </SignInButton>
-            </SignedOut>
+            )}
           </div>
         </div>
       </nav>

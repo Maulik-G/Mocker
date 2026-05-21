@@ -22,6 +22,20 @@ export const metadata: Metadata = {
     template: "%s | Mocker",
   },
   description: "Practice for CAT, GATE, and other competitive exams with free mocks and previous year papers, test series on Mocker.",
+  keywords: [
+    "Mocker", 
+    "Mocker Maulik", 
+    "Mocker mock tests", 
+    "CAT mock tests", 
+    "GATE mock tests", 
+    "Tech mock tests", 
+    "free mock test platform", 
+    "exam preparation",
+    "Maulik Gaur",
+    "Aaradhya Maharishi"
+  ],
+  authors: [{ name: "Maulik Gaur", url: "https://maulikgaur.me" }, { name: "Aaradhya Maharishi" }],
+  creator: "Maulik Gaur",
   icons: {
     icon: "/logo-icon.svg",
   },
@@ -70,20 +84,37 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode;}>) {
   
   // --- ADD THIS JSON-LD SCRIPT ---
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Mocker',
-    url: siteUrl,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteUrl}/search?q={search_term_string}`, // Example search URL
+  const schemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Mocker',
+      url: siteUrl,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${siteUrl}/search?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
       },
-      'query-input': 'required name=search_term_string',
     },
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'EducationalOrganization',
+      name: 'Mocker',
+      url: siteUrl,
+      logo: `${siteUrl}/logo-icon.svg`,
+      description: 'The ultimate exam preparation platform for students. Practice CAT, GATE, and Tech mocks.',
+      founder: [
+        { '@type': 'Person', name: 'Maulik Gaur', url: 'https://maulikgaur.me' },
+        { '@type': 'Person', name: 'Aaradhya Maharishi' }
+      ],
+      sameAs: [
+        "https://github.com/Maulik-G/Mocker"
+      ]
+    }
+  ];
   // --- END ADD ---
   
   return (
@@ -95,7 +126,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {/* --- ADD THIS SCRIPT TAG --- */}
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
           />
           {/* --- END ADD --- */}
           
